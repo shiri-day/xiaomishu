@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<base target="_top">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-title" content="小秘書">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="robots" content="noindex">
+<title>小秘書</title>
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAMAAAAKE/YAAAAAYFBMVEX7+PT6+PT59vL39PDz8ezw7+rt7efq6uPn6OHm5t/l5t/j5Nzh4drg4drg4dnf4dnb3tXU187M0cbFy7++xrm4wLOzvK6wuauns6Oirp2dqpmcqJeZppSXpZOSoI6PnotMzaPjAAADgElEQVR42u3ca3ejIBAGYHY1kjbZjRrvCv7/f7lNE5VsvSLoeM7Lt/aQ5CmHADMOZfUBGwMaaKCBBhpooIEGGmiggQYaaKCBBhpooIEGGmiggQYaaKCBBvrg6DKrprpUWUkKnXPGmC/Gugj/qwvP6aCFyx7tPNaHf3dxKzLogD1bPNwlenUJyaC9lyiY/rs4GfQLxC7DXT6bPuTQn0AD3bUsie6P1oBO98F2avp8/xQl2T7oPGwWjbb9YvObFxabo3O/B7IE/dhC823R917FQvTXXNkQLX1mBs18uRl6wKyBZv5W6JCZQ2sdRjTQGTOJZtkmaG4WzbdAx8oHnvxQZ3MJfVd5k3gDdDfQXqK/jSfdznS2jy7aD7vKNWcPeW3fqLSObkIQ5pTrDkyl0/wqso5uQhA1TNE75QXaqx7T3lhirXDL6/lG+9bRl+ajqp+iaHpWBT3fjqt1dN9pvnpOz4+x152fKQSxLHawiJ6drDnnNR20Xlpsd7Sl0BLoo6Lvq9sOaHMN6NEMqcHmWUe75tGudbRzRPTJPPpkHf2B1YP45hJyxsPdN5dlL0sfq46bHurskTzzOE51IHTcG8PSRsf9iRnS6KTL8V2Pgo6HUv+E0co4M08eA62a3fwYS96ImSz6zVwcI7AdNRNFJ7/HzHujizhKe8zqmTmnlvdIH+HMRYyM86mglqwpniEYF8vM+6JvzcFCDM2NglxaTLZDqoy1Os5eQS+XJ7t1rVW/mUuKCUgl1uXVj7kxaN4XnSnD+j3Ws8Z59yXvXf1mrsjmp9XpcI5mzQ0C27g61mzeOBM4e/Sqx80EDkw96gkzhVPeD/WUmcTR9D/1pJnGeTp5q/KZrkmnEQQoY81FfRB0p55jJhNuvdSzzHRixOzx9CsQNS30ZSqwTaO5NcYzrhIYQrflQKvv2eTblQMF+jWAQ4lJ+4VX7ZOSD7nOLM/aVdSL0emqelyldbXBqXW07B7ZhivGWrbTjDnSOlqtnvYivUsUMou8NRXUy9HC8NNxR2yAHi5U12salxk00NLok+ZPuQm6FgYLVTxRb4OuC27KzLWuFelVqomrGfMfvUVTt7zubmLd0LxQpH/hrAxWLn1OoH1JeE0hYxaFwe2vRrsFYbTmbh/+rQDQQAMNNNBAAw000EADDTTQQAMNNNBAAw000EADDTTQQAMNNNBAAw30sdo/UgqVer/IKBUAAAAASUVORK5CYII=">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAMAAAAKE/YAAAAAYFBMVEX7+PT6+PT59vL39PDz8ezw7+rt7efq6uPn6OHm5t/l5t/j5Nzh4drg4drg4dnf4dnb3tXU187M0cbFy7++xrm4wLOzvK6wuauns6Oirp2dqpmcqJeZppSXpZOSoI6PnotMzaPjAAADgElEQVR42u3ca3ejIBAGYHY1kjbZjRrvCv7/f7lNE5VsvSLoeM7Lt/aQ5CmHADMOZfUBGwMaaKCBBhpooIEGGmiggQYaaKCBBhpooIEGGmiggQYaaKCBBvrg6DKrprpUWUkKnXPGmC/Gugj/qwvP6aCFyx7tPNaHf3dxKzLogD1bPNwlenUJyaC9lyiY/rs4GfQLxC7DXT6bPuTQn0AD3bUsie6P1oBO98F2avp8/xQl2T7oPGwWjbb9YvObFxabo3O/B7IE/dhC823R917FQvTXXNkQLX1mBs18uRl6wKyBZv5W6JCZQ2sdRjTQGTOJZtkmaG4WzbdAx8oHnvxQZ3MJfVd5k3gDdDfQXqK/jSfdznS2jy7aD7vKNWcPeW3fqLSObkIQ5pTrDkyl0/wqso5uQhA1TNE75QXaqx7T3lhirXDL6/lG+9bRl+ajqp+iaHpWBT3fjqt1dN9pvnpOz4+x152fKQSxLHawiJ6drDnnNR20Xlpsd7Sl0BLoo6Lvq9sOaHMN6NEMqcHmWUe75tGudbRzRPTJPPpkHf2B1YP45hJyxsPdN5dlL0sfq46bHurskTzzOE51IHTcG8PSRsf9iRnS6KTL8V2Pgo6HUv+E0co4M08eA62a3fwYS96ImSz6zVwcI7AdNRNFJ7/HzHujizhKe8zqmTmnlvdIH+HMRYyM86mglqwpniEYF8vM+6JvzcFCDM2NglxaTLZDqoy1Os5eQS+XJ7t1rVW/mUuKCUgl1uXVj7kxaN4XnSnD+j3Ws8Z59yXvXf1mrsjmp9XpcI5mzQ0C27g61mzeOBM4e/Sqx80EDkw96gkzhVPeD/WUmcTR9D/1pJnGeTp5q/KZrkmnEQQoY81FfRB0p55jJhNuvdSzzHRixOzx9CsQNS30ZSqwTaO5NcYzrhIYQrflQKvv2eTblQMF+jWAQ4lJ+4VX7ZOSD7nOLM/aVdSL0emqelyldbXBqXW07B7ZhivGWrbTjDnSOlqtnvYivUsUMou8NRXUy9HC8NNxR2yAHi5U12salxk00NLok+ZPuQm6FgYLVTxRb4OuC27KzLWuFelVqomrGfMfvUVTt7zubmLd0LxQpH/hrAxWLn1OoH1JeE0hYxaFwe2vRrsFYbTmbh/+rQDQQAMNNNBAAw000EADDTTQQAMNNNBAAw000EADDTTQQAMNNNBAAw30sdo/UgqVer/IKBUAAAAASUVORK5CYII=">
+<style>
+  :root{
+    --bg:#F2EEE8; --card:#FBF9F6; --ink:#4F4A46; --muted:#9A928A; --line:#E4DED6;
+    --accent:#8F9E8B; --accent-soft:#E9EDE6; --danger:#B5706A;
+    --blue:#7D8E9C; --blue-soft:#E4E7EA; --pink:#B08681; --pink-soft:#EFE2E0;
+    --shared:#7E9A93; --shared-soft:#E1E9E6; --fin:#AD9566; --fin-soft:#EFE8DA;
+    --co:#9A8C9F; --co-soft:#E8E3EA; --gray:#A9A29B; --gray-soft:#ECE8E3;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,"PingFang TC","Noto Sans TC","Microsoft JhengHei",sans-serif;color:var(--ink)}
+  .phone{max-width:520px;margin:0 auto;min-height:100vh;padding-bottom:110px}
+  header{position:sticky;top:0;z-index:5;background:var(--bg);padding:14px 16px 8px}
+  .title{display:flex;align-items:center;justify-content:space-between;gap:8px}
+  .title h1{font-size:20px;margin:0}
+  .title .r{display:flex;gap:8px;align-items:center}
+  .who{font-size:12px;color:var(--muted);background:var(--card);border:1px solid var(--line);padding:4px 10px;border-radius:99px}
+  .icon{border:1px solid var(--line);background:var(--card);border-radius:99px;width:30px;height:30px;font-size:15px}
+  .tabs{display:flex;background:#E8E2DA;border-radius:12px;padding:3px;margin-top:12px}
+  .tabs button{flex:1;border:0;background:transparent;padding:9px 0;border-radius:10px;font-size:14px;color:var(--muted);font-weight:600;white-space:nowrap}
+  .tabs button.on{background:var(--card);color:var(--ink);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+  .quick{display:flex;gap:8px;margin:12px 16px 4px}
+  .quick input{flex:1;min-width:0;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:11px 12px;font-size:16px;outline:none}
+  .quick button{border:0;background:var(--accent);color:#fff;border-radius:12px;padding:0 14px;font-size:15px;font-weight:600}
+  .chips{display:flex;gap:6px;margin:10px 16px 0;overflow-x:auto}
+  .chip{border:1px solid var(--line);background:var(--card);border-radius:99px;padding:5px 12px;font-size:13px;color:var(--muted);white-space:nowrap}
+  .chip.on{border-color:var(--ink);color:var(--ink);font-weight:600}
+  .sec{margin:16px 16px 0}
+  .sec h2{font-size:13px;color:var(--muted);margin:0 0 6px 4px;font-weight:600;display:flex;gap:6px;align-items:center}
+  .sec h2 .n{background:#E6E0D8;border-radius:99px;padding:0 7px;font-size:11px}
+  .sec.overdue h2{color:var(--danger)}
+  .list{background:var(--card);border-radius:14px;overflow:hidden;border:1px solid var(--line)}
+  .row{display:flex;align-items:center;gap:12px;padding:12px 14px;border-top:1px solid var(--line)}
+  .row:first-child{border-top:0}
+  .row.sel{background:var(--accent-soft)}
+  .box{width:22px;height:22px;border-radius:7px;border:2px solid #CFC7BD;flex:none;display:grid;place-items:center;font-size:14px;color:#fff}
+  .row.sel .box{background:var(--accent);border-color:var(--accent)}
+  .row .main{flex:1;min-width:0}
+  .row .t{font-size:15px;line-height:1.35;word-break:break-word}
+  .row .m{font-size:12px;color:var(--muted);margin-top:2px;display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+  .tag{font-size:11px;border-radius:6px;padding:1px 6px}
+  .t-blue{background:var(--blue-soft);color:#5F7384}.t-pink{background:var(--pink-soft);color:#946B66}
+  .t-shared{background:var(--shared-soft);color:#5E7A72}.t-fin{background:var(--fin-soft);color:#8E784D}
+  .t-co{background:var(--co-soft);color:#7E7184}.t-gray{background:var(--gray-soft);color:#7A746E}
+  .late{color:var(--danger)}
+  .empty{text-align:center;color:var(--muted);padding:40px 0;font-size:14px}
+  .bar{position:fixed;left:50%;transform:translateX(-50%) translateY(130%);visibility:hidden;bottom:0;width:100%;max-width:520px;background:var(--card);border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom));display:flex;gap:10px;align-items:center;transition:transform .25s;z-index:10}
+  .bar.show{transform:translateX(-50%) translateY(0);visibility:visible}
+  .bar .cnt{flex:1;font-size:14px}
+  .bar button{border:0;border-radius:12px;padding:11px 16px;font-size:15px;font-weight:600}
+  .b-done{background:var(--accent);color:#fff}.b-del{background:#F0E2DF;color:var(--danger)}
+  .mhead{display:flex;align-items:center;justify-content:space-between;margin:14px 16px 8px}
+  .mhead b{font-size:18px}
+  .mhead button{border:1px solid var(--line);background:var(--card);border-radius:10px;width:36px;height:32px;font-size:16px}
+  .legend{display:flex;gap:10px;margin:0 16px 8px;font-size:12px;color:var(--muted);flex-wrap:wrap}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:4px;vertical-align:-1px}
+  .grid{margin:0 8px;background:var(--card);border-radius:14px;border:1px solid var(--line);overflow:hidden}
+  .wk{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+  .wk.head div{font-size:11px;color:var(--muted);text-align:center;padding:6px 0;border-bottom:1px solid var(--line)}
+  .day{min-height:78px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:3px 2px;overflow:hidden}
+  .day:nth-child(7n){border-right:0}
+  .day .d{font-size:12px;text-align:center;margin-bottom:2px}
+  .day.other{background:#F7F4EF}.day.other .d{color:#CFC7BD}
+  .day.today .d span{background:var(--accent);color:#fff;border-radius:99px;padding:1px 6px}
+  .day.pick{background:var(--accent-soft)}
+  .ev{font-size:10px;line-height:1.25;border-radius:4px;padding:1px 3px;margin-bottom:2px;white-space:nowrap;overflow:hidden}
+  .more{font-size:10px;color:var(--muted);text-align:center}
+  .daylist{margin:12px 16px}
+  .daylist h3{font-size:15px;margin:0 0 8px 4px}
+  .item{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:10px 12px;margin-bottom:8px}
+  .item.sel{background:var(--accent-soft)}
+  .item .stripe{width:4px;align-self:stretch;border-radius:4px}
+  .item .tm{font-size:13px;color:var(--muted);width:44px;flex:none}
+  .item .body{flex:1;min-width:0}
+  .item .tt{font-size:15px;word-break:break-word}
+  .item .nn{font-size:12px;color:var(--muted);margin-top:2px}
+  .item .box{width:20px;height:20px}
+  .item.sel .box{background:var(--accent);border-color:var(--accent)}
+  .hide{display:none!important}
+  .loading{position:fixed;inset:0;background:rgba(242,238,232,.75);display:grid;place-items:center;z-index:30;font-size:15px;color:var(--muted)}
+  .toast{position:fixed;left:50%;bottom:calc(96px + env(safe-area-inset-bottom));transform:translateX(-50%);background:#4F4A46;color:#fff;padding:10px 16px;border-radius:12px;font-size:14px;z-index:40;max-width:88%;white-space:pre-line;line-height:1.5}
+  .err{margin:40px 20px;text-align:center;color:var(--danger)}
+  .usage{font-size:11px;color:var(--muted);margin-top:6px;text-align:right}
+  .usage.warn{color:var(--danger)}
+  .toast button{margin-left:12px;background:#fff;color:#4F4A46;border:0;border-radius:8px;padding:4px 10px;font-size:13px;font-weight:600}
+  .shoprow{display:flex;align-items:center;gap:12px;padding:13px 14px;border-top:1px solid var(--line);font-size:16px}
+  .shoprow:first-child{border-top:0}
+  .shoprow .circle{width:22px;height:22px;border-radius:99px;border:2px solid #CFC7BD;flex:none}
+  .shoprow.gone{opacity:.35;text-decoration:line-through;transition:opacity .3s}
+  .shoprow.gone .circle{background:var(--shared);border-color:var(--shared)}
+  .hint{margin:8px 20px 0;font-size:12px;color:var(--muted)}
+  .search{margin:12px 16px 0}
+  .search input{width:100%;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:10px 12px;font-size:16px;outline:none}
+  .note{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin:10px 16px 0;display:flex;gap:12px}
+  .note.sel{background:var(--accent-soft)}
+  .note .body{flex:1;min-width:0}
+  .note .cat{font-size:12px;color:var(--muted)}
+  .note .tt{font-size:15px;font-weight:600;margin-top:2px;word-break:break-word}
+  .note .ct{font-size:13px;color:#6B655F;margin-top:4px;line-height:1.5;word-break:break-word;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden}
+  .note .lk{font-size:13px;margin-top:6px;display:flex;gap:12px;flex-wrap:wrap}
+  .note .lk a{color:#5F7384;text-decoration:none}
+  .note .mt{font-size:11px;color:var(--muted);margin-top:6px}
+  .note.sel .box{background:var(--accent);border-color:var(--accent)}
+  .b-share{background:var(--shared-soft);color:#5E7A72}
+  .mask{position:fixed;inset:0;background:rgba(79,74,70,.35);z-index:50;display:flex;align-items:flex-end;justify-content:center}
+  .sheet{background:var(--card);width:100%;max-width:520px;border-radius:20px 20px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom));max-height:88vh;overflow:auto}
+  .sheet h3{margin:0 0 12px;font-size:16px;display:flex;justify-content:space-between;align-items:center}
+  .sheet h3 button{border:0;background:transparent;font-size:20px;color:var(--muted)}
+  .field{margin-bottom:12px}
+  .field label{display:block;font-size:12px;color:var(--muted);margin:0 0 4px 2px}
+  .field input,.field textarea{width:100%;border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;font-size:16px;font-family:inherit;color:var(--ink);outline:none}
+  .field textarea{min-height:64px;resize:vertical}
+  .two{display:flex;gap:10px}.two .field{flex:1;min-width:0}
+  .clear{border:0;background:transparent;color:var(--muted);font-size:12px;margin-top:4px;padding:0 2px}
+  .switch{display:flex;align-items:center;gap:10px;font-size:15px;margin:4px 0 16px}
+  .switch input{width:20px;height:20px;accent-color:var(--accent)}
+  .acts{display:flex;gap:10px}
+  .acts button{flex:1;border:0;border-radius:12px;padding:12px 0;font-size:15px;font-weight:600}
+  .a-save{background:var(--accent);color:#fff}.a-done{background:var(--shared-soft);color:#5E7A72}.a-del{background:#F0E2DF;color:var(--danger)}
+  .note-hint{font-size:12px;color:var(--muted);margin:-4px 0 12px 2px}
+  .row .main,.item .body,.note .body{cursor:pointer}
+  .field select{width:100%;border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 12px;font-size:16px;font-family:inherit;color:var(--ink)}
+</style>
+</head>
+<body>
+<div class="phone">
+  <header>
+    <div class="title"><h1>🗂 小秘書</h1><div class="r"><span class="who" id="who"></span><button class="icon" id="refresh" aria-label="重新整理">⟳</button></div></div>
+    <div class="tabs"><button class="on" data-tab="todo">📋 待辦</button><button data-tab="shop">🛒 購物</button><button data-tab="notes">📝 筆記</button><button data-tab="cal">📅 月曆</button></div>
+    <div class="usage" id="usage"></div>
+  </header>
+
+  <section id="todo">
+    <div class="quick"><input id="q" placeholder="隨口記，例如：明天晚上8點吃飯" enterkeyhint="send"><button id="qbtn">記下</button></div>
+    <div class="chips" id="chips"></div>
+    <div id="todoList"></div>
+  </section>
+
+  <section id="shop" class="hide">
+    <div class="quick"><input id="sq" placeholder="要買什麼？例如：牛奶、衛生紙" enterkeyhint="send"><button id="sbtn">加入</button></div>
+    <div class="hint">買到了就點一下劃掉，點錯可以按「復原」</div>
+    <div id="shopList"></div>
+  </section>
+
+  <section id="notes" class="hide">
+    <div class="quick"><input id="nq" placeholder="記一下，例如：靈感：工地拍縮時" enterkeyhint="send"><button id="nbtn">記下</button></div>
+    <div class="search"><input id="nsearch" placeholder="🔍 搜尋筆記"></div>
+    <div class="chips" id="nchips"></div>
+    <div id="noteList"></div>
+  </section>
+
+  <section id="cal" class="hide">
+    <div class="mhead"><button id="prev">‹</button><b id="mtitle"></b><button id="next">›</button></div>
+    <div class="legend" id="legend"></div>
+    <div class="grid"><div class="wk head"><div>日</div><div>一</div><div>二</div><div>三</div><div>四</div><div>五</div><div>六</div></div><div class="wk" id="days"></div></div>
+    <div class="daylist" id="daylist"></div>
+  </section>
+</div>
+
+<div class="bar" id="bar"><span class="cnt" id="cnt"></span><button class="b-del" id="bdel">🗑 刪除</button><button class="b-share hide" id="bshare">🏠 共同</button><button class="b-done" id="bdone">✅ 完成</button></div>
+<div class="loading hide" id="loading">處理中…</div>
+<div class="mask hide" id="nmask"><div class="sheet">
+  <h3><span>編輯筆記</span><button id="nClose" aria-label="關閉">✕</button></h3>
+  <div class="field"><label>分類</label><select id="nC"></select></div>
+  <div class="field"><label>標題</label><input id="nT"></div>
+  <div class="field"><label>內容</label><textarea id="nCt" style="min-height:110px"></textarea></div>
+  <div class="field"><label>連結</label><input id="nU" type="url" placeholder="https://"></div>
+  <label class="switch"><input type="checkbox" id="nS">🏠 共同（大家都查得到）</label>
+  <div class="acts"><button class="a-del" id="nDel">🗑 刪除</button><button class="a-save" id="nSave">儲存</button></div>
+</div></div>
+<div class="mask hide" id="mask"><div class="sheet" id="sheet">
+  <h3><span id="eTitleBar">編輯</span><button id="eClose" aria-label="關閉">✕</button></h3>
+  <div class="note-hint hide" id="eHint"></div>
+  <div class="field"><label>事項</label><input id="eT"></div>
+  <div class="two">
+    <div class="field"><label>日期</label><input id="eD" type="date"><button class="clear" data-clear="eD">清除日期</button></div>
+    <div class="field"><label>時間</label><input id="eTm" type="time"><button class="clear" data-clear="eTm">不設時間</button></div>
+  </div>
+  <div class="field"><label>結束日期（多天行程才需要）</label><input id="eE" type="date"></div>
+  <div class="field"><label>備註</label><textarea id="eN"></textarea></div>
+  <label class="switch"><input type="checkbox" id="eS">🏠 共同（大家都看得到、都會提醒）</label>
+  <div class="acts"><button class="a-del" id="eDel">🗑 刪除</button><button class="a-done" id="eDone">✅ 完成</button><button class="a-save" id="eSave">儲存</button></div>
+</div></div>
+
+<script>
+(function () {
+  // 同一份檔案兩種用法：放在 Apps Script（google.script.run），或放在 GitHub Pages（用網址參數 t、s 呼叫 API）
+  var QS = (function () { var o = {}; location.search.replace(/^\?/, '').split('&').forEach(function (kv) { var i = kv.indexOf('='); if (i > 0) o[decodeURIComponent(kv.slice(0, i))] = decodeURIComponent(kv.slice(i + 1)); }); return o; })();
+  var TOKEN = '<?= token ?>';
+  if (TOKEN.indexOf('<' + '?') === 0) TOKEN = QS.t || '';
+  var IS_GAS = typeof google !== 'undefined' && google.script && google.script.run;
+  var API_URL = QS.s ? 'https://script.google.com/macros/s/' + QS.s + '/exec' : '';
+  var W = '日一二三四五六';
+  var TONE_COLOR = { blue: 'var(--blue)', pink: 'var(--pink)', shared: 'var(--shared)', fin: 'var(--fin)', co: 'var(--co)', gray: 'var(--gray)' };
+  var S = { data: null, filter: 'all', sel: {}, month: null, picked: null, tab: 'todo', ncat: 'all', nsearch: '' };
+  var TABS = ['todo', 'shop', 'notes', 'cal'];
+
+  function $(id) { return document.getElementById(id); }
+  function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function ymd(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function parse(s) { var p = s.split('-'); return new Date(+p[0], p[1] - 1, +p[2]); }
+  function addDays(s, n) { var d = parse(s); d.setDate(d.getDate() + n); return ymd(d); }
+  function label(s) { var d = parse(s); return (d.getMonth() + 1) + '/' + d.getDate() + '（' + W[d.getDay()] + '）'; }
+  function selCount() { return Object.keys(S.sel).length; }
+
+  function busy(on) { $('loading').classList.toggle('hide', !on); }
+  function toast(msg, ms, actionLabel, action) {
+    var t = document.createElement('div'); t.className = 'toast';
+    var span = document.createElement('span'); span.textContent = msg; t.appendChild(span);
+    if (actionLabel) {
+      var b = document.createElement('button'); b.textContent = actionLabel;
+      b.onclick = function () { t.remove(); action(); };
+      t.appendChild(b);
+    }
+    document.body.appendChild(t); setTimeout(function () { t.remove(); }, ms || 2000);
+  }
+  // 呼叫後端：quiet=true 時不顯示「處理中」
+  function call(fn, args, ok, fail, quiet) {
+    if (!quiet) busy(true);
+    var onErr = function (msg) { busy(false); if (fail) fail(msg); toast('⚠️ ' + msg, 3500); };
+    if (IS_GAS) {
+      var r = google.script.run.withSuccessHandler(function (res) { busy(false); ok(res); })
+        .withFailureHandler(function (err) { onErr(err && err.message ? err.message : String(err)); });
+      r[fn].apply(r, args);
+      return;
+    }
+    if (!API_URL || !TOKEN) { onErr('連結不完整，請在 LINE 傳「小秘書」重新取得'); return; }
+    fetch(API_URL, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' }, body: JSON.stringify({ api: fn, args: args }) })
+      .then(function (r) { return r.json(); })
+      .then(function (res) { if (res && res.ok) { busy(false); ok(res.data); } else onErr((res && res.error) || '發生錯誤'); })
+      .catch(function () { onErr('連線失敗，請稍後再試'); });
+  }
+
+  function rangeFor(month) {
+    var from = new Date(month.getFullYear(), month.getMonth() - 1, 1);
+    var to = new Date(month.getFullYear(), month.getMonth() + 3, 0);
+    return [ymd(from), ymd(to)];
+  }
+  function load() {
+    var m = S.month || new Date();
+    var r = rangeFor(m);
+    call('pageLoad', [TOKEN, r[0], r[1]], function (data) {
+      S.data = data;
+      if (!S.month) { var t = parse(data.today); S.month = new Date(t.getFullYear(), t.getMonth(), 1); }
+      if (!S.picked) S.picked = data.today;
+      S.sel = {};
+      render();
+    });
+  }
+
+  function ownerTag(it) {
+    if (it.company) return ['co', '🏢 公司'];
+    if (it.finance) return ['fin', '💰 財務'];
+    if (it.shared) return ['shared', '🏠 共同'];
+    if (it.ownerId === S.data.me.id) return [it.tone, it.ownerEmoji + ' 我'];
+    return [it.tone, it.ownerEmoji + ' ' + it.ownerName];
+  }
+  function pass(it) {
+    var f = S.filter;
+    if (f === 'all') return true;
+    if (f === 'mine') return !it.shared && it.ownerId === S.data.me.id;
+    if (f === 'shared') return it.shared;
+    return !it.shared && it.ownerId === f;
+  }
+
+  function render() {
+    var d = S.data;
+    $('who').textContent = d.me.emoji + ' ' + d.me.name;
+    var chips = [['all', '全部'], ['mine', '我的'], ['shared', '🏠 共同']];
+    d.people.forEach(function (p) { if (p.id !== d.me.id) chips.push([p.id, p.emoji + ' ' + p.name]); });
+    $('chips').innerHTML = chips.map(function (c) {
+      return '<span class="chip' + (S.filter === c[0] ? ' on' : '') + '" data-f="' + esc(c[0]) + '">' + esc(c[1]) + '</span>';
+    }).join('');
+    Array.prototype.forEach.call(document.querySelectorAll('.chip'), function (c) {
+      c.onclick = function () { S.filter = c.getAttribute('data-f'); render(); };
+    });
+    var legend = '<span><i style="background:var(--' + (d.me.emoji === '👨' ? 'blue' : 'pink') + ')"></i>我</span>';
+    d.people.forEach(function (p) { if (p.id !== d.me.id) legend += '<span><i style="background:var(--' + (p.emoji === '👨' ? 'blue' : p.emoji === '👩' ? 'pink' : 'gray') + ')"></i>' + esc(p.name) + '</span>'; });
+    legend += '<span><i style="background:var(--shared)"></i>共同</span><span><i style="background:var(--fin)"></i>財務</span>';
+    if (d.items.some(function (i) { return i.company; })) legend += '<span><i style="background:var(--co)"></i>公司</span>';
+    $('legend').innerHTML = legend;
+    var u = d.push || { used: 0, quota: 200 };
+    $('usage').textContent = '本月 LINE 推播 ' + u.used + ' / ' + u.quota + ' 則';
+    $('usage').classList.toggle('warn', u.used >= u.quota * 0.8);
+    renderTodo();
+    renderShop();
+    renderNotes();
+    renderCal();
+    updateBar();
+  }
+
+  // ---------- 🛒 購物 ----------
+  function renderShop() {
+    var rows = S.data.shopping || [], groups = S.data.shoppingGroups || ['其他'];
+    var h = '';
+    groups.forEach(function (g) {
+      var list = rows.filter(function (r) { return r.group === g || (g === '其他' && groups.indexOf(r.group) === -1); });
+      if (!list.length) return;
+      h += '<div class="sec"><h2>' + esc(g) + '<span class="n">' + list.length + '</span></h2><div class="list">';
+      list.forEach(function (r) { h += '<div class="shoprow" data-id="' + esc(r.id) + '"><div class="circle"></div><div>' + esc(r.name) + '</div></div>'; });
+      h += '</div></div>';
+    });
+    $('shopList').innerHTML = h || '<div class="empty">購物清單是空的 🛒</div>';
+    Array.prototype.forEach.call(document.querySelectorAll('.shoprow'), function (el) {
+      el.onclick = function () {
+        if (el.classList.contains('gone')) return;
+        el.classList.add('gone');
+        var id = el.getAttribute('data-id');
+        call('pageShopRemove', [TOKEN, [id]], function (res) {
+          S.data.shopping = S.data.shopping.filter(function (r) { return r.id !== id; });
+          var removed = res.removed || [];
+          setTimeout(renderShop, 400);
+          if (removed.length) toast('✔️ 已劃掉「' + removed[0].name + '」', 4000, '復原', function () {
+            call('pageShopAdd', [TOKEN, removed.map(function (r) { return { name: r.name, group: r.group }; }), ''], function () { load(); });
+          });
+        }, function () { el.classList.remove('gone'); }, true);
+      };
+    });
+  }
+  function shopAdd() {
+    var v = $('sq').value.trim(); if (!v) return;
+    call('pageShopAdd', [TOKEN, [], v], function (res) { $('sq').value = ''; if (res.message) toast(res.message); load(); });
+  }
+
+  // ---------- 📝 筆記 ----------
+  function renderNotes() {
+    var cats = S.data.noteCats || {};
+    var chips = [['all', '全部']].concat(Object.keys(cats).map(function (k) { return [k, cats[k]]; }));
+    $('nchips').innerHTML = chips.map(function (c) {
+      return '<span class="chip' + (S.ncat === c[0] ? ' on' : '') + '" data-c="' + esc(c[0]) + '">' + esc(c[1]) + '</span>';
+    }).join('');
+    Array.prototype.forEach.call(document.querySelectorAll('#nchips .chip'), function (c) {
+      c.onclick = function () { S.ncat = c.getAttribute('data-c'); renderNotes(); };
+    });
+    var q = S.nsearch.toLowerCase();
+    var list = (S.data.notes || []).filter(function (n) {
+      if (S.ncat !== 'all' && n.category !== S.ncat) return false;
+      if (q && (n.title + ' ' + n.content + ' ' + n.url).toLowerCase().indexOf(q) === -1) return false;
+      return true;
+    });
+    var h = '';
+    list.forEach(function (n) {
+      h += '<div class="note' + (S.sel[n.id] ? ' sel' : '') + '" data-id="' + esc(n.id) + '"><div class="body">' +
+        '<div class="cat">' + esc(n.catLabel) + (n.shared ? '　🏠 共同' : '') + '</div>' +
+        '<div class="tt">' + esc(n.title) + '</div>' +
+        (n.content && n.content !== n.title ? '<div class="ct">' + esc(n.content) + '</div>' : '') +
+        ((n.url || n.imageUrl) ? '<div class="lk">' + (n.url ? '<a href="' + esc(n.url) + '" target="_blank">🔗 打開連結</a>' : '') +
+          (n.imageUrl ? '<a href="' + esc(n.imageUrl) + '" target="_blank">🖼 看照片</a>' : '') + '</div>' : '') +
+        '<div class="mt">' + esc(n.date) + '</div></div><div class="box">✓</div></div>';
+    });
+    $('noteList').innerHTML = h || '<div class="empty">' + (q || S.ncat !== 'all' ? '找不到符合的筆記' : '還沒有筆記，可以在上面記一下，或把喜歡的貼文分享給 LINE 小秘書') + '</div>';
+    Array.prototype.forEach.call(document.querySelectorAll('.note'), function (el) {
+      el.onclick = function (e) {
+        if (e.target.tagName === 'A') return; // 點連結就打開連結
+        var id = el.getAttribute('data-id');
+        if (e.target.closest && e.target.closest('.box')) {
+          if (S.sel[id]) delete S.sel[id]; else S.sel[id] = true;
+          el.classList.toggle('sel'); updateBar();
+          return;
+        }
+        openNoteEditor(id);
+      };
+    });
+  }
+  // ---------- 筆記編輯視窗 ----------
+  var NE = { id: null };
+  function openNoteEditor(id) {
+    var n = (S.data.notes || []).filter(function (x) { return x.id === id; })[0];
+    if (!n) return;
+    NE.id = id;
+    var cats = S.data.noteCats || {};
+    $('nC').innerHTML = Object.keys(cats).map(function (k) {
+      return '<option value="' + esc(k) + '"' + (k === n.category ? ' selected' : '') + '>' + esc(cats[k]) + '</option>';
+    }).join('');
+    $('nT').value = n.title || '';
+    $('nCt').value = n.content || '';
+    $('nU').value = n.url || '';
+    $('nS').checked = !!n.shared;
+    $('nmask').classList.remove('hide');
+  }
+  function closeNoteEditor() { $('nmask').classList.add('hide'); NE.id = null; }
+  $('nClose').onclick = closeNoteEditor;
+  $('nmask').onclick = function (ev) { if (ev.target === $('nmask')) closeNoteEditor(); };
+  $('nSave').onclick = function () {
+    var f = { category: $('nC').value, title: $('nT').value.trim(), content: $('nCt').value.trim(), url: $('nU').value.trim(), shared: $('nS').checked };
+    if (!f.title && !f.content) { toast('標題和內容不能都空白'); return; }
+    var id = NE.id; closeNoteEditor();
+    call('pageNoteEdit', [TOKEN, id, f], function (res) { toast(res.message); load(); });
+  };
+  $('nDel').onclick = function () {
+    if (!window.confirm('確定要刪除這則筆記嗎？')) return;
+    var id = NE.id; closeNoteEditor();
+    call('pageNoteAction', [TOKEN, [id], 'delete'], function (res) { toast(res.message); load(); });
+  };
+
+  function noteAdd() {
+    var v = $('nq').value.trim(); if (!v) return;
+    call('pageQuickAdd', [TOKEN, '記一下：' + v], function (res) { $('nq').value = ''; if (res.message) toast(res.message, 3500); load(); });
+  }
+
+  function renderTodo() {
+    var today = S.data.today;
+    var todos = S.data.items.filter(function (i) { return i.kind === 'todo' && !i.virtual && !i.company && pass(i); });
+    var byDate = function (a, b) { return (a.date + a.time) < (b.date + b.time) ? -1 : 1; };
+    var groups = [
+      ['overdue', '⏰ 還沒完成（已過期）', todos.filter(function (i) { return i.date && (i.endDate || i.date) < today && !i.recurrence; }).sort(byDate)],
+      ['', '📌 今天', todos.filter(function (i) { return i.date && i.date <= today && (i.endDate || i.date) >= today; }).sort(byDate)],
+      ['', '🗓 接下來', todos.filter(function (i) { return i.date > today; }).sort(byDate)],
+      ['', '📝 沒排日期', todos.filter(function (i) { return !i.date; })]
+    ];
+    var h = '';
+    groups.forEach(function (g) {
+      if (!g[2].length) return;
+      h += '<div class="sec ' + g[0] + '"><h2>' + g[1] + '<span class="n">' + g[2].length + '</span></h2><div class="list">';
+      g[2].forEach(function (i) {
+        var tg = ownerTag(i);
+        var date = i.date ? '<span class="' + ((i.endDate || i.date) < today ? 'late' : '') + '">' + label(i.date) + (i.time ? ' ' + i.time : '') + '</span>' : '';
+        h += '<div class="row' + (S.sel[i.id] ? ' sel' : '') + '" data-id="' + esc(i.id) + '"><div class="box">✓</div><div class="main"><div class="t">' + esc(i.title) +
+          '</div><div class="m">' + date + '<span class="tag t-' + tg[0] + '">' + esc(tg[1]) + '</span>' +
+          (i.recurrence ? '<span>🔁 ' + esc(i.recurrence) + '</span>' : '') + (i.note ? '<span>📝 ' + esc(i.note) + '</span>' : '') + '</div></div></div>';
+      });
+      h += '</div></div>';
+    });
+    $('todoList').innerHTML = h || '<div class="empty">全部都做完了 🎉</div>';
+    bindSelectable('#todoList .row');
+  }
+
+  // 點左邊（或右邊）的勾勾＝選取，可以一次處理好幾筆；點文字＝打開編輯
+  function bindSelectable(selector) {
+    Array.prototype.forEach.call(document.querySelectorAll(selector), function (r) {
+      r.onclick = function (ev) {
+        var id = r.getAttribute('data-id');
+        if (ev.target.closest && ev.target.closest('.box')) {
+          if (S.sel[id]) delete S.sel[id]; else S.sel[id] = true;
+          r.classList.toggle('sel');
+          updateBar();
+          return;
+        }
+        openEditor(id);
+      };
+    });
+  }
+
+  // ---------- 編輯視窗 ----------
+  var E = { id: null };
+  function findItem(id) { return (S.data.items || []).filter(function (x) { return x.id === id; })[0]; }
+  function openEditor(id) {
+    var baseId = String(id).split('#')[0];
+    var it = findItem(baseId);
+    if (!it) return;
+    E.id = baseId;
+    $('eTitleBar').textContent = (it.kind === 'todo' ? '編輯待辦' : '編輯行程');
+    $('eHint').classList.toggle('hide', !it.recurrence);
+    $('eHint').textContent = it.recurrence ? '🔁 這是' + it.recurrence + '的重複事項，修改的是「下一次」（' + label(it.date) + '），之後會照規則繼續重複' : '';
+    $('eT').value = it.title;
+    $('eD').value = it.date || '';
+    $('eTm').value = it.time || '';
+    $('eE').value = it.endDate || '';
+    $('eN').value = it.note || '';
+    $('eS').checked = !!it.shared;
+    $('eDone').classList.toggle('hide', it.kind !== 'todo');
+    $('mask').classList.remove('hide');
+  }
+  function closeEditor() { $('mask').classList.add('hide'); E.id = null; }
+  $('eClose').onclick = closeEditor;
+  $('mask').onclick = function (ev) { if (ev.target === $('mask')) closeEditor(); };
+  Array.prototype.forEach.call(document.querySelectorAll('.clear'), function (b) {
+    b.onclick = function () { $(b.getAttribute('data-clear')).value = ''; if (b.getAttribute('data-clear') === 'eD') { $('eTm').value = ''; $('eE').value = ''; } };
+  });
+  $('eSave').onclick = function () {
+    var f = { title: $('eT').value.trim(), date: $('eD').value, time: $('eTm').value, endDate: $('eE').value, note: $('eN').value.trim(), shared: $('eS').checked };
+    if (!f.title) { toast('事項名稱不能空白'); return; }
+    if (f.time && !f.date) { toast('有時間的話要先選日期'); return; }
+    var id = E.id; closeEditor();
+    call('pageEdit', [TOKEN, id, f], function (res) { toast(res.message); load(); });
+  };
+  $('eDel').onclick = function () {
+    if (!window.confirm('確定要刪除嗎？')) return;
+    var id = E.id; closeEditor();
+    call('pageAction', [TOKEN, [id], 'delete'], function (res) { toast(res.message); load(); });
+  };
+  $('eDone').onclick = function () {
+    var id = E.id; closeEditor();
+    call('pageAction', [TOKEN, [id], 'done'], function (res) { toast(res.message); load(); });
+  };
+  function updateBar() {
+    var n = selCount();
+    var isNotes = S.tab === 'notes';
+    $('cnt').textContent = '已選 ' + n + (isNotes ? ' 則' : ' 筆');
+    $('bdone').classList.toggle('hide', isNotes);
+    $('bshare').classList.toggle('hide', !isNotes);
+    if (isNotes && S.data) {
+      var allShared = Object.keys(S.sel).every(function (id) { return (S.data.notes || []).some(function (x) { return x.id === id && x.shared; }); });
+      $('bshare').textContent = allShared ? '👤 自己看' : '🏠 共同';
+      $('bshare').setAttribute('data-act', allShared ? 'unshare' : 'share');
+    }
+    $('bar').classList.toggle('show', n > 0 && S.tab !== 'shop');
+  }
+
+  function onDay(s) {
+    return S.data.items.filter(function (i) {
+      return i.date && pass(i) && (i.endDate ? (s >= i.date && s <= i.endDate) : s === i.date);
+    }).sort(function (a, b) { return (a.time || '00:00') < (b.time || '00:00') ? -1 : 1; });
+  }
+  function renderCal() {
+    var m = S.month, today = S.data.today;
+    $('mtitle').textContent = m.getFullYear() + ' 年 ' + (m.getMonth() + 1) + ' 月';
+    var start = new Date(m.getFullYear(), m.getMonth(), 1 - new Date(m.getFullYear(), m.getMonth(), 1).getDay());
+    var h = '';
+    for (var i = 0; i < 42; i++) {
+      var d = new Date(start); d.setDate(start.getDate() + i);
+      if (i === 35 && d.getMonth() !== m.getMonth()) break;
+      var s = ymd(d), evs = onDay(s);
+      var inner = evs.slice(0, 3).map(function (e) {
+        return '<div class="ev t-' + e.tone + '">' + (e.time ? e.time.replace(/:00$/, '') + ' ' : '') + esc(e.title) + '</div>';
+      }).join('');
+      if (evs.length > 3) inner += '<div class="more">+' + (evs.length - 3) + '</div>';
+      h += '<div class="day' + (d.getMonth() !== m.getMonth() ? ' other' : '') + (s === today ? ' today' : '') + (s === S.picked ? ' pick' : '') +
+        '" data-d="' + s + '"><div class="d"><span>' + d.getDate() + '</span></div>' + inner + '</div>';
+    }
+    $('days').innerHTML = h;
+    Array.prototype.forEach.call(document.querySelectorAll('.day'), function (el) {
+      el.onclick = function () {
+        S.picked = el.getAttribute('data-d'); renderCal();
+        var dl = $('daylist'); if (dl.scrollIntoView) dl.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      };
+    });
+    renderDay();
+  }
+  function renderDay() {
+    var s = S.picked, evs = onDay(s);
+    var h = '<h3>' + label(s) + (s === S.data.today ? '　今天' : '') + '</h3>';
+    if (!evs.length) h += '<div class="empty" style="padding:16px 0">這天沒有安排 😌</div>';
+    evs.forEach(function (e) {
+      var canSel = !e.company;
+      var meta = ownerTag(e)[1] + (e.recurrence ? '　🔁 ' + e.recurrence : '') + (e.note ? '　📝 ' + e.note : '') +
+        (e.endDate ? '　' + label(e.date) + '～' + label(e.endDate) : '');
+      h += '<div class="item' + (canSel ? ' selectable' : '') + (S.sel[e.id] ? ' sel' : '') + '" data-id="' + esc(e.id) + '">' +
+        '<div class="stripe" style="background:' + TONE_COLOR[e.tone] + '"></div>' +
+        '<div class="tm">' + (e.time || (e.endDate ? '整天' : (e.kind === 'todo' ? '待辦' : '整天'))) + '</div>' +
+        '<div class="body"><div class="tt">' + esc(e.title) + '</div><div class="nn">' + esc(meta) + '</div></div>' +
+        (canSel && !e.virtual ? '<div class="box">✓</div>' : '') + '</div>';
+    });
+    $('daylist').innerHTML = h;
+    bindSelectable('#daylist .item.selectable');
+  }
+
+  function doAction(action) {
+    var ids = Object.keys(S.sel);
+    if (!ids.length) return;
+    if (action === 'delete' && !confirmDelete(ids.length)) return;
+    var fn = S.tab === 'notes' ? 'pageNoteAction' : 'pageAction';
+    call(fn, [TOKEN, ids, action], function (res) { toast(res.message); load(); });
+  }
+  function confirmDelete(n) {
+    // LINE 內建瀏覽器的 confirm 可以正常使用
+    return window.confirm('確定要刪除這 ' + n + ' 筆嗎？');
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.tabs button'), function (b) {
+    b.onclick = function () {
+      S.tab = b.getAttribute('data-tab');
+      Array.prototype.forEach.call(document.querySelectorAll('.tabs button'), function (x) { x.classList.toggle('on', x === b); });
+      TABS.forEach(function (t) { $(t).classList.toggle('hide', S.tab !== t); });
+      S.sel = {}; updateBar();
+      if (S.data) { renderTodo(); renderShop(); renderNotes(); renderCal(); }
+    };
+  });
+  function moveMonth(n) {
+    S.month = new Date(S.month.getFullYear(), S.month.getMonth() + n, 1);
+    var first = ymd(S.month), last = ymd(new Date(S.month.getFullYear(), S.month.getMonth() + 1, 0));
+    if (first < S.data.from || last > S.data.to) load(); else renderCal();
+  }
+  $('prev').onclick = function () { moveMonth(-1); };
+  $('next').onclick = function () { moveMonth(1); };
+  $('bdone').onclick = function () { doAction('done'); };
+  $('bdel').onclick = function () { doAction('delete'); };
+  $('bshare').onclick = function () { doAction($('bshare').getAttribute('data-act') || 'share'); };
+  $('sbtn').onclick = shopAdd;
+  $('sq').addEventListener('keydown', function (e) { if (e.key === 'Enter') shopAdd(); });
+  $('nbtn').onclick = noteAdd;
+  $('nq').addEventListener('keydown', function (e) { if (e.key === 'Enter') noteAdd(); });
+  $('nsearch').addEventListener('input', function () { S.nsearch = $('nsearch').value.trim(); renderNotes(); });
+  $('refresh').onclick = load;
+  function quickAdd() {
+    var v = $('q').value.trim();
+    if (!v) return;
+    call('pageQuickAdd', [TOKEN, v], function (res) {
+      $('q').value = '';
+      if (res.message) toast(res.message, 3500);
+      load();
+    });
+  }
+  $('qbtn').onclick = quickAdd;
+  $('q').addEventListener('keydown', function (e) { if (e.key === 'Enter') quickAdd(); });
+
+  load();
+})();
+</script>
+</body>
+</html>
